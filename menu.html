@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ichiraku_ramen</title>
+    <style>
+        body{
+            background-color: rgb(26, 24, 24);
+            font-family: sans-serif;
+            margin: 0;
+        }
+        .nav {
+            overflow: hidden;
+            backdrop-filter: blur(7px);
+            background-color: rgba(0, 0, 255, 0.132); 
+            background-image: url(logo2.png);
+            background-repeat: no-repeat;
+            background-position:350px;
+            background-size: 20%;
+            border-radius: 0px;
+            box-shadow: 50px 50px 1000px 50px rgba(0, 0, 255, 0.459);
+            width: 100%;
+            height: 151px;
+            position: fixed;
+            z-index: 1;
+            margin: 0;
+        }
+        .nav .right a{
+            float: left;
+            text-align: center;
+            font-size: 20px;
+            backdrop-filter: blur(20px);
+            background-color: rgba(230, 211, 181, 0.235);
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 36px;
+            margin: 15px;
+            transition: all 0.5s ease;
+            width: 150px;
+        }
+        .nav a:active{
+            color: white;
+        }
+        .right:hover a {
+            filter: blur(4px);
+        }
+        .right a:hover {
+            box-shadow: 2px 2px 20px 2px rgba(217, 255, 0, 0.183);
+            filter: blur(0px);
+            scale: 1.2;
+        }
+        .right{
+            float: right;
+            margin: 32px;
+            align-items: center;
+        }
+
+        .nav img {
+            width: 308px;
+            height: 148px;
+            transition: all 1s ease;
+        }
+        .nav img:hover{
+            scale: 1.2;
+            filter: drop-shadow(2px 2px 50px  yellow);
+        }
+        .menu h1, h2, p {
+            color: white;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .menu h2 {
+            /*background-color: rgba(245, 0, 0, 0.5);
+            border-radius: 20px;
+            background-image: linear-gradient(rgba(255, 0, 0, 0.534), rgba(255, 166, 0, 0.705));
+            box-shadow: 5px 5px 25px orange, -5px -5px 25px red;*/
+            filter: drop-shadow(5px 5px 20px rgb(102, 255, 0));
+            
+        }
+        .menu{
+            width: 80%;
+            background-color: rgba(0, 0, 0, 0.7);
+            
+            margin: auto;
+            padding: 20px;
+            border-radius: 40px;
+            /*box-shadow: 0px 0px 30px 0px rgba(209, 155, 5, 0.24);*/
+            margin-bottom: 25px;
+            margin-top: 70px;
+        }
+        hr {
+          height: 2px;
+          background-color: orange;
+          border-color: orange;
+        }
+        .item p {
+            display: inline-block;
+        }
+        .flavor {
+            color: orange;
+            font-size: 25px;
+            text-align: left;
+            width: 75%;
+        }
+        .price {
+            color: orange;
+            font-size: 25px;
+            text-align: right;
+            width: 20%;
+        }
+        .flavor, .price {
+            border-bottom: 2px dotted orange;  
+        }
+        .desc {
+            font-size: x-large;
+            text-align: left;
+            width: 75%;
+            margin: 0;
+            margin-left: 60px;
+        }
+        .image-paragraph img,
+        .image-paragraph p {
+            display: inline-block;
+            vertical-align: middle; 
+        }
+        .image-list img,
+        .image-list section {
+            display: inline-block;
+            vertical-align: middle; 
+        }
+        .list {
+            width: 50%;
+            margin-left: 15px;
+        }
+        .list p.flavor, .price {
+            margin: 0;
+        }
+        button {
+            float: right;
+            margin-right: 260px;
+            background-color:orange;
+            color:white;
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            border-radius: 26px;
+            transition: all 0.7s ease;
+            border: solid 0.5px rgb(193, 252, 56);
+        }
+        button:hover{
+            background-color: rgb(214, 151, 34);
+            scale: 1.2;
+            filter: drop-shadow(2px 2px 50px  rgba(179, 192, 2, 0.514));
+        }
+        img.food{
+            width: 200px;
+            transition: all 1.4s ease;
+        }
+        img.food:hover{
+            scale: 1.3;
+            filter: drop-shadow(2px 2px 30px rgba(255, 217, 0, 0.37));
+        } 
+        .naruto{
+            position: absolute;
+            top: 50%;
+        }
+        .b {
+            position: absolute;
+            top: 50%;
+            right: 0;
+        }
+        .c{
+            position: absolute;
+            top: 100%;
+        }
+        .d {
+            position: absolute;
+            top: 300%;
+        }
+        .e{
+            position: absolute;
+            top: 350%;
+            right: 0;
+        }
+        .f {
+            position: absolute;
+            top: 150%;
+            right: 0;
+        }
+        .g{
+            position: absolute;
+            top: 200%;
+        }
+        .h {
+            position: absolute;
+            top: 250%;
+            right: 0;
+        }
+        footer {
+            font-size: large;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position:relative;
+            bottom: 0;
+            width: 96%;
+            margin: auto;
+            margin-top: 10%;
+        }
+        footer a{
+            text-decoration: none;
+            color: orange;
+            font-size: 40px;
+            filter: drop-shadow(5px 5px 20px rgb(102, 255, 0));
+            transition: all 0.7s ease;
+        }
+        footer p{
+            margin: 18px;
+        }
+        footer i:hover{
+            scale: 1.2;
+        }
+        .background{
+            margin-top: 180px;
+            width: 20%;
+            border-radius: 20px;
+        }
+        .background2{
+            width: 20%;
+            border-radius: 20px;
+        }
+
+        @media screen and (max-width: 600px) {
+            /* Adjustments for the navigation bar */
+            .nav {
+                height: auto;
+                position: relative;
+                background-image: none;
+                box-shadow: none;
+            }
+
+            /* Adjustments for the logo */
+            .nav img {
+                width: 100%;
+                height: auto;
+                margin: 0;
+            }
+
+            /* Adjustments for the navigation links */
+            .right {
+                float: none;
+                text-align: center;
+                margin: 0;
+            }
+            .right a {
+                float: none;
+                display: block;
+                margin: 10px auto;
+            }
+
+            /* Adjustments for menu items */
+            .menu {
+                width: 90%; /* Adjust as needed */
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            /* Adjustments for menu item images */
+            .food {
+                width: 100%;
+                height: auto;
+            }
+
+            /* Adjustments for footer */
+            footer {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="nav">
+            <img src="logo.png" alt="">
+            <div class="right">
+                <a href="home.html"><i class="fa fa-fw fa-home"></i>Home</a>
+                <a href="menu.html"><i class="fa fa-fw fa-cutlery"></i>Menu</a>
+                <a href="contacts.html"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+            </div>
+        </div>
+    </section>
+    <div style="display: flex; justify-content: center; gap: 70px;">
+        <img class="background" src="pict1.jpg" alt="" >
+        <img class="background" src="pict2.jpg" alt="" >
+        <img class="background" src="pict3.jpg" alt="" >
+        <img class="background" src="pict4.jpg" alt="" >
+        
+    </div>
+
+    <div >
+        <!--<img class="naruto" src="naruto.png" alt="">
+        <img class="b" src="b.png" alt="">
+        <img class="c" src="c.png" alt="" style="width: 290px;height: 290px;">
+        <img class="d" src="d.png" alt="">
+        <img class="e" src="e.png" alt="">
+        <img class="f" src="f.png" alt="">
+        <img class="g" src="g.png" alt="">
+        <img class="h" src="h.png" alt="" style="width: 342px;height: 194px;">-->
+
+    </div> 
+    <div class="menu" style="background-image: url(naruto.png);background-repeat: no-repeat;">
+            <h1>ICHIRAKU RAMEN</h1>
+            <p><b>Narotu</b></p>
+            <hr>
+            <h2 style="margin-top: 70px;">Classic ramen</h2>
+        <ul>
+            <li>
+                    <article class="item">
+                        <p class="flavor"><b>Shoyu ramen</b></p><p class="price"><b>€15</b></p>
+                        <div class="image-paragraph">
+                        <img class="food" src="shoyu ramen.png" alt="">
+                        <p class="desc">2 tranches de yakibuta (porc chashu), sauce shoyu originale, bouillon de porc, nouilles ra-men maison, shinachiku, œuf mollet mariné, algues nori, cébette.</p>
+                        </div>
+                        <button>comandez!</button>
+                    </article>
+            </li>
+            <li>
+                    <article class="item">
+                        <p class="flavor"><b>Miso ramen</b></p><p class="price"><b>€18</b></p>
+                        <div class="image-paragraph">
+                            <img class="food" src="Miso ramen.png" alt="">
+                        <p class="desc">2 tranches de yakibuta (porc chashu), sauce miso originale, bouillon de porc, nouilles ra-men maison, shinachiku, œuf mollet mariné, maïs, beurre, cébette.</p>
+                        </div>
+                        <button>comandez!</button>
+                    </article>
+            </li>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Tan tan ramen</b></p><p class="price"><b>€18</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="tan tan .png" alt="">
+                    <p class="desc">Porc haché, poireau, sauce sésame au beurre de cacahuète, bouillon de porc, nouilles ra-men maison, œuf mollet mariné, légumes, huile piquante.</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Shio ramen</b></p><p class="price"><b>€16</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="shio.png" alt="">
+                    <p class="desc">2 tranches de yakibuta (porc chashu), bouillon de porc, nouilles ra-men maison, shinachiku, œuf mollet mariné, algues wakame, cébette.</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Neghikara ramen</b></p><p class="price"><b>€18</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="Neghikara ramen.png" alt="" style="width: 195px;">
+                    <p class="desc">Yakibuta émincé (porc), sauce shoyu originale, bouillon de porc, nouilles ra-men maison, œuf mollet mariné, poireau, pâte piquante</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+        </ul>
+        <h2 style="margin-top: 150px;">Special ramen</h2>
+        <ul>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Tori miso ramen</b></p><p class="price"><b>€16</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="Tori miso ramen.png" alt="">
+                    <p class="desc">Tranches de poitrine de poulet mijotée, sauce miso originale, bouillon de poulet, nouilles ra-men maison, shinachiku, œuf mollet mariné, maïs, beurre, cébette.</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Ankake kaisen seafood ramen</b></p><p class="price"><b>€21</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="Ankake kaisen seafood ramen.png" alt="">
+                    <p class="desc">Calamar et crevettes, sauce shoyu originale, bouillon de porc, nouilles ra-men maison, légumes.</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Veggie tan tan ramen</b></p><p class="price"><b>€15</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="Veggie tan tan ramen.png" alt="">
+                    <p class="desc">Tofu émincé, poireau, sauce sésame au beurre de cacahuète, bouillon veggie, nouilles ra-men maison, légumes, huile piquante.</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Ankake gomoku ramen</b></p><p class="price"><b>€21</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="Ankake gomoku ramen.png" alt="">
+                    <p class="desc">Porc et crevettes, sauce shoyu originale, bouillon de porc, nouilles ra-men maison, œuf mollet mariné, légumes.</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Hiyashi kaisen ramen</b></p><p class="price"><b>€18</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="Hiyashi kaisen ramen.png" alt="">
+                    <p class="desc">Calamar et crevettes, sauce bouillon de poulet, soja et sésame, nouilles ra-men maison, algues wakame, concombre, laitue iceberg, cébette.</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+            <li>
+                <article class="item">
+                    <p class="flavor"><b>Hiyashi karaage ramen</b></p><p class="price"><b>€16</b></p>
+                    <div class="image-paragraph">
+                        <img class="food" src="Hiyashi karaage ramen.png" alt="">
+                    <p class="desc">Poulet frit, sauce bouillon de poulet, soja et sésame, nouilles ra-men maison, œuf mollet mariné, concombre, laitue iceberg, cébette.</p>
+                    </div>
+                    <button>comandez!</button>
+                </article>
+            </li>
+        </ul>
+        <hr style="margin-top: 110px; margin-bottom: 50px;">
+        <p style="font-size: xx-large;"><b>Thank you</b></p>
+        <p style="font-size: x-large;"><b>ありがとう</b></p>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 100px;">
+        <img src="e.png" alt="" >
+        <img src="b.png" alt="" >
+        <img src="f.png" alt="" >
+    </div>
+    <div class="menu">
+        <h2 style="margin-bottom: 70px;margin-top: 100px;">Café & thé</h2>
+            <div class="image-list">
+                <img src="Café & thé.png" style="border-radius: 30px;">
+            <section class="list">
+                <ul>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Espresso</b></p><p class="price"><b>€3</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Double espresso</b></p><p class="price"><b>€4</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Café au lait</b></p><p class="price"><b>€4</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Thé vert sencha</b></p><p class="price"><b>€3</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Thé vert genmaicha</b></p><p class="price"><b>€3</b></p>
+                    </article>
+                </li>
+                </ul>
+                <button>comandez!</button>
+            </section>
+            </div>
+            <h2 style="margin-bottom: 70px; margin-top: 100px;">COCKTAILS AU SHOCHU & CITRONNADES MAISON</h2>
+            <div class="image-list">
+                <img src="boison.png" style="border-radius: 30px;">
+            <section class="list" style="width: 67%;">
+                <ul>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>FRUITS ROUGES (40 cl -5% vol.)</b></p><p class="price"><b>€9</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>MANGUE (40 cl - 5% vol.)</b></p><p class="price"><b>€9</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>YUZU (40 cl -5% vol.)</b></p><p class="price"><b>€9</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>CITRONNADE AU GINGEMBRE (40 cI)</b></p><p class="price"><b>€7</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>CITRONNADE AU YUZU (40 cI)</b></p><p class="price"><b>€7</b></p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>CITRONNADE AU YUZU (40 cI)</b></p><p class="price"><b>€6</b></p>
+                    </article>
+                </li>
+                </ul>
+                <button>comandez!</button>
+            </section>
+            </div>
+
+
+            <h2 style="margin-bottom: 70px; margin-top: 100px;">Desserts</h2>
+            <div class="image-list">
+                <img src="desserts.png" style="border-radius: 30px;">
+            <section class="list" style="width: 61%;">
+                <ul>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Mochi (2 pcs.)</b></p><p class="price"><b>€6</b></p>
+                        <p class="desc">Pâtisserie à la crème à base de riz (demandez nos saveurs)</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Mini cheesecake</b></p><p class="price"><b>€6</b></p>
+                        <p class="desc">Sésame noir, thé vert ou yuzu avec crème Fouettée et caramel.</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Dorayaki</b></p><p class="price"><b>€5</b></p>
+                        <p class="desc">Pancake fourré à la pâte de haricot rouge.</p>
+                    </article>
+                </li>
+                <li>
+                    <article class="item">
+                        <p class="flavor"><b>Glace japonaise (3 boules)</b></p><p class="price"><b>€6</b></p>
+                        <p class="desc">Crème glacée au matcha, au sésame noir ou au haricot rouge.</p>
+                    </article>
+                </li>
+                </ul>
+                <button>comandez!</button>
+            </section>
+            </div>
+            <hr style="margin-top: 72px; margin-bottom: 50px;">
+            <p style="font-size: xx-large;"><b>Thank you</b></p>
+            <p style="font-size: x-large;"><b>ありがとう</b></p>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 70px;">
+        <img class="background2" src="pict5.jpg" alt="" >
+        <img class="background2" src="pict6.jpg" alt="" >
+        <img class="background2" src="pict7.jpg" alt="" >
+        <img class="background2" src="pict8.jpg" alt="" >
+        
+    </div>
+    <footer class="fade-in">
+        <p>Ramen Restaurant</p>
+        <p>2425番2号 Kusumoto, Awaji, Hyogo 656-2301, Japan</p>
+        <p style="font-size: 1.2em;">Suivez-nous sur les réseaux sociaux:</p>
+        <a href="#" ><i class="fa fa-fw fa-facebook"></i>&nbsp;</a>
+        <a href="#" ><i class="fa fa-fw fa-twitter"></i>&nbsp;</a>
+        <a href="#" ><i class="fa fa-fw fa-instagram"></i>&nbsp;</a>
+        <br>
+        <br>
+        <p >© Copyright 2024 ichiraku Ramen, Tous droits réservés </p>
+    </footer>
+</body>
+</html>
